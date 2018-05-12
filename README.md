@@ -6,7 +6,7 @@ This project is intended to create a web scrapping framework to aid implementati
 
 How to execute the script:
 	
-	In command prompt, scrapy runspider ScrapyIndeedClient.py
+	In command prompt, scrapy runspider ScrapyCraigslistClient.py
 
 ## Motivation
 
@@ -32,7 +32,7 @@ Pre-requisite:
 
 ## Contributors
 
-	Raymond wai yan Ko
+	Raymond wai yan Ko - wisely38@hotmail.com
 
 ## License
 
