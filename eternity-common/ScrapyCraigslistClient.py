@@ -1,9 +1,9 @@
 from mongodb.CraigslistMongoDbDao import CraigslistMongoDbDao
+import datetime
 import scrapy
 import requests
 from bs4 import BeautifulSoup
 from lxml import html
-import datetime
 
 
 class ScrapyCraigslistClient(scrapy.Spider):

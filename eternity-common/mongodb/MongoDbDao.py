@@ -1,11 +1,10 @@
 from mongodb.MongoDbDriver import MongoDbDriver as mdd
 import datetime
-from bson.binary import Binary
 import uuid
-from bson import BSON
 import pytz
 from bson.json_util import dumps
 import json
+
 
 class MongoDbDao(object):
 
@@ -23,9 +22,9 @@ class MongoDbDao(object):
         return {
             "item_id": id,
             "item_title": title,
-             "date": utcnow,
+            "date": utcnow,
             "engine": source,
-            "tags": [source,type],
+            "tags": [source, type],
             "file_type": file_type,
             "uuid": str(uuid.uuid4().hex),
             "item_summary": pending_record
@@ -37,7 +36,7 @@ class MongoDbDao(object):
             "item_id": id,
             "item_title": title,
             "engine": source,
-            "tags": [source,type],
+            "tags": [source, type],
             "file_type": file_type,
             "item_summary": pending_record
         }
@@ -108,9 +107,9 @@ class MongoDbDao(object):
             raise Exception('Missing some common parameters!')
 
     def validate_getmodel_by_basic_parameters(self, source, id):
-        if not source or not id :
+        if not source or not id:
             raise Exception('Missing basic parameters!')
 
     def validate_getmodel_by_single_parameter(self, id):
-        if not id :
+        if not id:
             raise Exception('Missing id parameters!')

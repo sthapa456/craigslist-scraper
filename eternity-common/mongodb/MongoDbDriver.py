@@ -1,5 +1,6 @@
 from pymongo import MongoClient
 
+
 class MongoDbDriver(object):
 
     def __init__(self):
@@ -8,5 +9,3 @@ class MongoDbDriver(object):
 
     def get_database(self, database_name):
         return self.client[database_name]
-
-
