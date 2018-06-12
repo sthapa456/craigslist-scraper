@@ -1,15 +1,10 @@
-import sys; print('Python %s on %s' % (sys.version, sys.platform))
-sys.path.extend(['/Users/kowaiyan/Documents/workspaces/mongodb/config', '/Users/kowaiyan/Documents/workspaces/mongodb/config/eternity-common'])
-
 from mongodb.CraigslistMongoDbDao import CraigslistMongoDbDao
 import scrapy
 import requests
 from bs4 import BeautifulSoup
-from lxml import etree
 from lxml import html
-from itertools import chain
 import datetime
-import os
+
 
 class ScrapyCraigslistClient(scrapy.Spider):
     name = "craigslist_vehicle_spider"
@@ -24,19 +19,22 @@ class ScrapyCraigslistClient(scrapy.Spider):
         # print(os.path.dirname(IndeedMongoDbDao.__file__))
 
     def load_detail_page(self):
-        for index, tuple in enumerate(self.item_details):
-            (item_id, item_detail_url) = tuple
+        for index, item_tuple in enumerate(self.item_details):
+            (item_id, item_detail_url) = item_tuple
             r = requests.get(item_detail_url)
             content = r.content
             detail_soup = BeautifulSoup(content, "html.parser")
-            item_detail_title = detail_soup.find(True, {'class': ['postingtitletext']}).text
-            item_detail_summary = detail_soup.find(True, {'id': ['postingbody']})
+            item_detail_title = detail_soup.find(
+                True, {'class': ['postingtitletext']}).text
+            item_detail_summary = detail_soup.find(
+                True, {'id': ['postingbody']})
             str_datetime = datetime.datetime.now().strftime('%Y-%m-%d_%H-%M-%S')
             try:
                 if not self.item_dao.check_if_itemid_exists(item_id):
                     self.write_html(item_id, r.text, str_datetime)
                     print('Item id:{0} html file written.'.format(item_id))
-                    self.item_dao.insert_item_record(item_id, item_detail_title, str(item_detail_summary))
+                    self.item_dao.insert_item_record(
+                        item_id, item_detail_title, str(item_detail_summary))
                     print('Item id:{0} db record written.'.format(item_id))
                 else:
                     print('Item id:{0} already existed.'.format(item_id))

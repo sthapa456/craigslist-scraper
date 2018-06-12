@@ -1,5 +1,7 @@
 from mongodb.MongoDbDao import MongoDbDao as mddao
 
+__all__ = ['CraigslistMongoDbDao']
+
 
 class CraigslistMongoDbDao(mddao):
 
