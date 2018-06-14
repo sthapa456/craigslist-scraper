@@ -1,6 +1,6 @@
 ## Summary
 
-An automated web scraper and parser to store item detail from web search results with python and MongoDB, the resulting metadata and text could utilise MongoDB's built-in analytic tools for further text analysis
+Automated web scraper and parser - An automated web scraper and parser to store item detail from web search results with python and MongoDB, the resulting metadata and text could utilise MongoDB's built-in analytic tools for further text analysis
 
 ## Synopsis
 
