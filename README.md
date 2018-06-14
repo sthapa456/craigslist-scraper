@@ -1,3 +1,7 @@
+## Summary
+
+An automated web scraper and parser to store item detail from web search results with python and MongoDB, the resulting metadata and text could utilise MongoDB's built-in analytic tools for further text analysis
+
 ## Synopsis
 
 This project is intended to create a web scrapping framework to aid implementation of simple web scrapper.  Given the search listing page and some unique css id/class to identify the items, the scrapper will scan these items for their href links and will then access these links to get the item title and detail before storing into html file and to MongoDB for future analytic purpose.
